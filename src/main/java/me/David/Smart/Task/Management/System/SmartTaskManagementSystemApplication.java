@@ -1,0 +1,13 @@
+package me.David.Smart.Task.Management.System;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SmartTaskManagementSystemApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SmartTaskManagementSystemApplication.class, args);
+	}
+
+}
