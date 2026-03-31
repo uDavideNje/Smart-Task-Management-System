@@ -3,33 +3,27 @@ package me.David.Smart.Task.Management.control;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import me.David.Smart.Task.Management.model.Task;
-import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.repository.TaskRepository;
 import me.David.Smart.Task.Management.service.TaskService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("api/tasks")
 @AllArgsConstructor
 public class TaskController {
 
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
     //private final UserRepository userRepository;
 
     @PostMapping("")
-    public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody Task taskDTO){
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task){
 
-        Task task = Task.builder()
-                .title(taskDTO.getTitle())
-                .priority(taskDTO.getPriority())
-                .status(taskDTO.getStatus())
-                .build();
+        Task savedTask = taskService.createTask(task);
 
-        return taskRepository.save(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(task);
 
     }
 }
