@@ -5,6 +5,7 @@ import me.David.Smart.Task.Management.model.Status;
 import me.David.Smart.Task.Management.model.Task;
 import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.repository.TaskRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +21,18 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+
+
     public List<Task> findTaskByStatus(Status status){
         return taskRepository.getTaskByStatus(status);
     }
 
-    public List<Task> findTaskById(UUID id){
+    public Task findTaskById(UUID id){
         return taskRepository.getTaskById(id);
     }
+
+    public void deleteTaskById(UUID id){
+        taskRepository.deleteById(id);
+    }
+
 }
