@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import me.David.Smart.Task.Management.model.Status;
 import me.David.Smart.Task.Management.model.Task;
 import me.David.Smart.Task.Management.model.TaskList;
+import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
+import me.David.Smart.Task.Management.model.mapper.TaskMapper;
 import me.David.Smart.Task.Management.repository.TaskRepository;
 import me.David.Smart.Task.Management.service.TaskService;
 import org.springframework.http.HttpStatus;
@@ -22,33 +24,35 @@ import java.util.UUID;
 public class TaskController {
 
     private final TaskService taskService;
+    private final TaskMapper taskMapper;
     //private final UserRepository userRepository;
 
     @PostMapping("/create")
-    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task){
+    public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody Task task){
 
-        Task savedTask = taskService.createTask(task);
+        TaskDTO savedTask = taskService.createTask(task);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
 
     }
 
     @GetMapping("/getTaskById")
-    public ResponseEntity<Task> getTaskById(@Valid UUID id){
-        Task retrivedTask = taskService.findTaskById(id);
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable UUID id){
+        TaskDTO retrivedTask = taskService.findTaskById(id);
 
         return ResponseEntity.status(HttpStatus.FOUND).body(retrivedTask);
     }
 
-    @GetMapping("/getTaskById")
-    public ResponseEntity<TaskListDTO> getTaskByStatus(@Valid Status status){
-        TaskListDTO retrivedTasks = new TaskListDTO(taskService.findTaskByStatus(status));
+    @GetMapping("/getTaskByStatus")
+    public ResponseEntity<TaskListDTO> getTaskByStatus(@RequestParam Status status){
+        TaskListDTO retrivedTasks = taskService.findTaskByStatus(status);
 
         return ResponseEntity.status(HttpStatus.FOUND).body(retrivedTasks);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteTaskById(UUID id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTaskById(@PathVariable UUID id) {
         taskService.deleteTaskById(id);
+        return ResponseEntity.noContent().build();
     }
 }

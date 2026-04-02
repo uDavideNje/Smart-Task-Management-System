@@ -2,7 +2,7 @@ package me.David.Smart.Task.Management.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
+
 
 import java.util.ArrayList;
 import java.util.UUID;
