@@ -2,6 +2,7 @@ package me.David.Smart.Task.Management.model.mapper;
 
 import me.David.Smart.Task.Management.model.Status;
 import me.David.Smart.Task.Management.model.Task;
+import me.David.Smart.Task.Management.model.User;
 import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
 import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
@@ -19,7 +20,8 @@ public class TaskMapper {
                 task.getDescription(),
                 task.getDeadline(),
                 task.getStatus(),
-                task.getPriority()
+                task.getPriority(),
+                task.getUser().getId()
         );
     }
 
@@ -47,13 +49,14 @@ public class TaskMapper {
         );
     }
 
-    public Task toTask(CreateTaskRequest request) {
+    public Task toTask(CreateTaskRequest request, User user) {
         return Task.builder()
                 .title(request.title())
                 .description(request.description())
                 .deadline(request.deadline())
                 .priority(request.priority())
-                .status(Status.TODO) // sensible default
+                .status(Status.TODO)
+                .user(user)
                 .build();
     }
 }

@@ -20,6 +20,10 @@ public class Task {
     @Column(name = "id",updatable = false, nullable = false)
     private UUID id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(name = "title", nullable = false)
     private String title;
 

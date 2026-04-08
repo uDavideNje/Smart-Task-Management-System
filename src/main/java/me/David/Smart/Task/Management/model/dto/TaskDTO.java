@@ -11,6 +11,7 @@ public record TaskDTO(UUID id,
                       String description,
                       LocalDateTime deadline,
                       Status status,
-                      Priority priority) {
+                      Priority priority,
+                      UUID userId  ) {
 
 }
