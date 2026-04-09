@@ -1,27 +1,64 @@
 package me.David.Smart.Task.Management.service;
 
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import me.David.Smart.Task.Management.model.Task;
+import me.David.Smart.Task.Management.model.User;
+import me.David.Smart.Task.Management.model.dto.CreateUserRequest;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
 import me.David.Smart.Task.Management.model.exception.UserNotFoundException;
 import me.David.Smart.Task.Management.model.mapper.TaskMapper;
 import me.David.Smart.Task.Management.repository.TaskRepository;
+import me.David.Smart.Task.Management.model.dto.UpdateUserRequest;
 import me.David.Smart.Task.Management.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
+@AllArgsConstructor
 public class UserService {
     private UserRepository userRepository;
     private TaskRepository taskRepository;
     private TaskMapper taskMapper;
 
-    public TaskListDTO getTasksForUser(UUID userId){
-        if (!userRepository.existsById(userId)) {
-            throw new UserNotFoundException("User not found with id: " + userId);
+    public void createUser(CreateUserRequest request) {
+        if (userRepository.existsByEmail(request.email())) {
+            throw new EmailAlreadyExistsException("Email already in use: " + request.email());
         }
+
+        User user = User.builder()
+                .username(request.username())
+                .email(request.email())
+                .build();
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public TaskListDTO getTasksForUser(UUID userId){
+        userRepository.findById(userId)
+                .orElseThrow(()-> new UserNotFoundException("User not found with id: " + userId));
 
         List<Task> tasks = taskRepository.findByUserId(userId);
         return taskMapper.toTaskListDTO(tasks);
 
     }
+
+    @Transactional
+    public void updateUser(UUID userId, UpdateUserRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+        if (request.username() != null) user.setUsername(request.username());
+        if (request.email() != null) user.setEmail(request.email());
+    }
+
+    @Transactional
+    public void deleteUser(UUID userId){
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException("User not found with id: " + userId);
+        }
+        userRepository.deleteById(userId);
+    }
+
 }

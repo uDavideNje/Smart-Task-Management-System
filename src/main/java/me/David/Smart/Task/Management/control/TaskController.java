@@ -21,7 +21,7 @@ import java.util.UUID;
 public class TaskController {
 
     private final TaskService taskService;
-    private final TaskMapper taskMapper;
+
 
     @PostMapping
     public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody CreateTaskRequest task){
