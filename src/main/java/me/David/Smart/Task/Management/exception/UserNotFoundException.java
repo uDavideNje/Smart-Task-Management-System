@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.model.exception;
+package me.David.Smart.Task.Management.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

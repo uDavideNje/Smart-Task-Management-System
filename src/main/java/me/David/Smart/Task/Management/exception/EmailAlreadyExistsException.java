@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.model.exception;
+package me.David.Smart.Task.Management.exception;
 
 public class EmailAlreadyExistsException extends RuntimeException {
     public EmailAlreadyExistsException(String message) {

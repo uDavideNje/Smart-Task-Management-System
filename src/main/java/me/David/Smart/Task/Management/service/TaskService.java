@@ -7,8 +7,8 @@ import me.David.Smart.Task.Management.model.User;
 import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
 import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.model.exception.TaskNotFoundException;
-import me.David.Smart.Task.Management.model.exception.UserNotFoundException;
+import me.David.Smart.Task.Management.exception.TaskNotFoundException;
+import me.David.Smart.Task.Management.exception.UserNotFoundException;
 import me.David.Smart.Task.Management.model.mapper.TaskMapper;
 import me.David.Smart.Task.Management.repository.TaskRepository;
 import me.David.Smart.Task.Management.repository.UserRepository;
@@ -36,7 +36,7 @@ public class TaskService {
 
 
     public TaskListDTO findTaskByStatus(Status status){
-        List<Task> tasks = taskRepository.getTaskByStatus(status);
+        List<Task> tasks = taskRepository.findByStatus(status);
         return taskMapper.toTaskListDTO(tasks);
     }
 

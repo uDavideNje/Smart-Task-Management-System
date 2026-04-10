@@ -6,8 +6,11 @@ import me.David.Smart.Task.Management.model.Task;
 import me.David.Smart.Task.Management.model.User;
 import me.David.Smart.Task.Management.model.dto.CreateUserRequest;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.model.exception.UserNotFoundException;
+import me.David.Smart.Task.Management.model.dto.UserDTO;
+import me.David.Smart.Task.Management.exception.EmailAlreadyExistsException;
+import me.David.Smart.Task.Management.exception.UserNotFoundException;
 import me.David.Smart.Task.Management.model.mapper.TaskMapper;
+import me.David.Smart.Task.Management.model.mapper.UserMapper;
 import me.David.Smart.Task.Management.repository.TaskRepository;
 import me.David.Smart.Task.Management.model.dto.UpdateUserRequest;
 import me.David.Smart.Task.Management.repository.UserRepository;
@@ -22,17 +25,23 @@ public class UserService {
     private UserRepository userRepository;
     private TaskRepository taskRepository;
     private TaskMapper taskMapper;
+    private UserMapper userMapper;
 
-    public void createUser(CreateUserRequest request) {
+    public UserDTO createUser(CreateUserRequest request) {
         if (userRepository.existsByEmail(request.email())) {
             throw new EmailAlreadyExistsException("Email already in use: " + request.email());
         }
-
         User user = User.builder()
                 .username(request.username())
                 .email(request.email())
                 .build();
-        userRepository.save(user);
+        return userMapper.toUserDTO(userRepository.save(user));
+    }
+
+    public UserDTO getUserByID(UUID userId){
+        return userRepository.findById(userId).
+                map(userMapper::toUserDTO).
+                orElseThrow(()-> new UserNotFoundException("User not found with id: "+ userId));
     }
 
     @Transactional
@@ -47,6 +56,10 @@ public class UserService {
 
     @Transactional
     public void updateUser(UUID userId, UpdateUserRequest request) {
+        if (request.email() != null && userRepository.existsByEmail(request.email())) {
+            throw new EmailAlreadyExistsException("Email already in use: " + request.email());
+        }
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
         if (request.username() != null) user.setUsername(request.username());
@@ -60,5 +73,6 @@ public class UserService {
         }
         userRepository.deleteById(userId);
     }
+
 
 }

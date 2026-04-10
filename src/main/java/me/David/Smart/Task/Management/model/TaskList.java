@@ -33,4 +33,14 @@ public class TaskList {
 
     @Column(name = "created", nullable = false)
     private LocalDateTime created;
+
+    @PrePersist
+    protected void onCreate() {
+        created = updated = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated = LocalDateTime.now();
+    }
 }

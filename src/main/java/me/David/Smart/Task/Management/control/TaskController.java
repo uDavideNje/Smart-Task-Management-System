@@ -6,7 +6,6 @@ import me.David.Smart.Task.Management.model.Status;
 import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
 import me.David.Smart.Task.Management.model.dto.TaskDTO;
 import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.model.mapper.TaskMapper;
 import me.David.Smart.Task.Management.service.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
