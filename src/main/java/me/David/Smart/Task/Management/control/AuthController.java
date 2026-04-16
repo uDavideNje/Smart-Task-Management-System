@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.control;
+package me.david.smart.task.management.control;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

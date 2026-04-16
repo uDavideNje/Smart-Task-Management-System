@@ -1,7 +1,7 @@
-package me.David.Smart.Task.Management.model.mapper;
+package me.david.smart.task.management.model.mapper;
 
-import me.David.Smart.Task.Management.model.User;
-import me.David.Smart.Task.Management.model.dto.UserDTO;
+import me.david.smart.task.management.model.User;
+import me.david.smart.task.management.model.dto.UserDTO;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,13 +1,11 @@
-package me.David.Smart.Task.Management.control;
+package me.david.smart.task.management.control;
 
 import lombok.AllArgsConstructor;
-import me.David.Smart.Task.Management.model.User;
-import me.David.Smart.Task.Management.model.dto.CreateUserRequest;
-import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.model.dto.UpdateUserRequest;
-import me.David.Smart.Task.Management.model.dto.UserDTO;
-import me.David.Smart.Task.Management.model.mapper.UserMapper;
-import me.David.Smart.Task.Management.service.UserService;
+import me.david.smart.task.management.model.dto.CreateUserRequest;
+import me.david.smart.task.management.model.dto.TaskListDTO;
+import me.david.smart.task.management.model.dto.UpdateUserRequest;
+import me.david.smart.task.management.model.dto.UserDTO;
+import me.david.smart.task.management.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,4 +49,8 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "working";
+    }
 }

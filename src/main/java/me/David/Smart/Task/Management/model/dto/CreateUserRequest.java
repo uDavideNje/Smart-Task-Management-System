@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.model.dto;
+package me.david.smart.task.management.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

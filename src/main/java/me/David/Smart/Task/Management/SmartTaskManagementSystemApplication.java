@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.System;
+package me.david.smart.task.management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

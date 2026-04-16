@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.exception;
+package me.david.smart.task.management.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

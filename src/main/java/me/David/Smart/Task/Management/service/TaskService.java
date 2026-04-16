@@ -1,17 +1,17 @@
-package me.David.Smart.Task.Management.service;
+package me.david.smart.task.management.service;
 
 import lombok.AllArgsConstructor;
-import me.David.Smart.Task.Management.model.Status;
-import me.David.Smart.Task.Management.model.Task;
-import me.David.Smart.Task.Management.model.User;
-import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
-import me.David.Smart.Task.Management.model.dto.TaskDTO;
-import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.exception.TaskNotFoundException;
-import me.David.Smart.Task.Management.exception.UserNotFoundException;
-import me.David.Smart.Task.Management.model.mapper.TaskMapper;
-import me.David.Smart.Task.Management.repository.TaskRepository;
-import me.David.Smart.Task.Management.repository.UserRepository;
+import me.david.smart.task.management.model.Status;
+import me.david.smart.task.management.model.Task;
+import me.david.smart.task.management.model.User;
+import me.david.smart.task.management.model.dto.CreateTaskRequest;
+import me.david.smart.task.management.model.dto.TaskDTO;
+import me.david.smart.task.management.model.dto.TaskListDTO;
+import me.david.smart.task.management.exception.TaskNotFoundException;
+import me.david.smart.task.management.exception.UserNotFoundException;
+import me.david.smart.task.management.model.mapper.TaskMapper;
+import me.david.smart.task.management.repository.TaskRepository;
+import me.david.smart.task.management.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +27,7 @@ public class TaskService {
 
     public TaskDTO createTask(CreateTaskRequest request){
         User user = userRepository.findById(request.userId())
-                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + request.userId()));
-
+                .orElseThrow(()-> new UserNotFoundException("User not found with id: " + request.userId()));
         Task task = taskMapper.toTask(request, user);
         return taskMapper.toTaskDTO(taskRepository.save(task));
     }

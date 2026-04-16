@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.model.dto;
+package me.david.smart.task.management.model.dto;
 
 import java.util.List;
 import java.util.UUID;

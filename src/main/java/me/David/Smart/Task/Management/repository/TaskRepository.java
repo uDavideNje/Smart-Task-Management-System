@@ -1,7 +1,7 @@
-package me.David.Smart.Task.Management.repository;
+package me.david.smart.task.management.repository;
 
-import me.David.Smart.Task.Management.model.Status;
-import me.David.Smart.Task.Management.model.Task;
+import me.david.smart.task.management.model.Status;
+import me.david.smart.task.management.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

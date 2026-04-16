@@ -1,19 +1,19 @@
-package me.David.Smart.Task.Management.service;
+package me.david.smart.task.management.service;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import me.David.Smart.Task.Management.model.Task;
-import me.David.Smart.Task.Management.model.User;
-import me.David.Smart.Task.Management.model.dto.CreateUserRequest;
-import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.model.dto.UserDTO;
-import me.David.Smart.Task.Management.exception.EmailAlreadyExistsException;
-import me.David.Smart.Task.Management.exception.UserNotFoundException;
-import me.David.Smart.Task.Management.model.mapper.TaskMapper;
-import me.David.Smart.Task.Management.model.mapper.UserMapper;
-import me.David.Smart.Task.Management.repository.TaskRepository;
-import me.David.Smart.Task.Management.model.dto.UpdateUserRequest;
-import me.David.Smart.Task.Management.repository.UserRepository;
+import me.david.smart.task.management.model.Task;
+import me.david.smart.task.management.model.User;
+import me.david.smart.task.management.model.dto.CreateUserRequest;
+import me.david.smart.task.management.model.dto.TaskListDTO;
+import me.david.smart.task.management.model.dto.UserDTO;
+import me.david.smart.task.management.exception.EmailAlreadyExistsException;
+import me.david.smart.task.management.exception.UserNotFoundException;
+import me.david.smart.task.management.model.mapper.TaskMapper;
+import me.david.smart.task.management.model.mapper.UserMapper;
+import me.david.smart.task.management.repository.TaskRepository;
+import me.david.smart.task.management.model.dto.UpdateUserRequest;
+import me.david.smart.task.management.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

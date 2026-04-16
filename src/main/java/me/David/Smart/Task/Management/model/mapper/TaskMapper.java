@@ -1,11 +1,11 @@
-package me.David.Smart.Task.Management.model.mapper;
+package me.david.smart.task.management.model.mapper;
 
-import me.David.Smart.Task.Management.model.Status;
-import me.David.Smart.Task.Management.model.Task;
-import me.David.Smart.Task.Management.model.User;
-import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
-import me.David.Smart.Task.Management.model.dto.TaskDTO;
-import me.David.Smart.Task.Management.model.dto.TaskListDTO;
+import me.david.smart.task.management.model.Status;
+import me.david.smart.task.management.model.Task;
+import me.david.smart.task.management.model.User;
+import me.david.smart.task.management.model.dto.CreateTaskRequest;
+import me.david.smart.task.management.model.dto.TaskDTO;
+import me.david.smart.task.management.model.dto.TaskListDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

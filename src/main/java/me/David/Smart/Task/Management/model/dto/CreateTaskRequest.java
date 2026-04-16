@@ -1,7 +1,7 @@
-package me.David.Smart.Task.Management.model.dto;
+package me.david.smart.task.management.model.dto;
 
 import jakarta.validation.constraints.*;
-import me.David.Smart.Task.Management.model.Priority;
+import me.david.smart.task.management.model.Priority;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

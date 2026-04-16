@@ -1,12 +1,12 @@
-package me.David.Smart.Task.Management.control;
+package me.david.smart.task.management.control;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import me.David.Smart.Task.Management.model.Status;
-import me.David.Smart.Task.Management.model.dto.CreateTaskRequest;
-import me.David.Smart.Task.Management.model.dto.TaskDTO;
-import me.David.Smart.Task.Management.model.dto.TaskListDTO;
-import me.David.Smart.Task.Management.service.TaskService;
+import me.david.smart.task.management.model.Status;
+import me.david.smart.task.management.model.dto.CreateTaskRequest;
+import me.david.smart.task.management.model.dto.TaskDTO;
+import me.david.smart.task.management.model.dto.TaskListDTO;
+import me.david.smart.task.management.service.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

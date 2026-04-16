@@ -1,4 +1,4 @@
-package me.David.Smart.Task.Management.model;
+package me.david.smart.task.management.model;
 
 public enum Priority {
     LOW,
